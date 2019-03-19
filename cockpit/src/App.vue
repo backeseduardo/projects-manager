@@ -3,6 +3,7 @@
     <div class="nav">
       <h3 class="nav__title">Project Manager</h3>
 
+      <router-link to="/login">Login</router-link>
       <router-link to="/">Home</router-link>
       <router-link to="/projects">Projects</router-link>
       <router-link to="/clients">Clients</router-link>
@@ -22,6 +23,7 @@
     background-color: var(--purple);
     color: var(--white);
     &__title {
+      margin: 0;
       margin-right: auto;
     }
     a {
@@ -30,7 +32,7 @@
       color: var(--white);
       text-decoration: none;
       &.router-link-exact-active {
-        color: var(--white-active);
+        color: var(--light);
       }
     }
   }
