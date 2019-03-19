@@ -63,7 +63,19 @@ export default {
   background-color: #fff;
 
   .panel {
-    width: calc(100vh * .7);
+    width: calc(100vw * .95);
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: 576px) {
+      width: calc(100vw * .9);
+    }
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: 768px) {
+      width: calc(100vw * .8);
+    }
+    // Large devices (desktops, 992px and up)
+    @media (min-width: 992px) {
+      width: calc(100vh * .7);
+    }
     // height: calc(100vh * .7);
     margin: auto;
     background-color: #f5f5f5;
