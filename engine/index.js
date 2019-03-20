@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const userRoute = require('./routes/user')
+const clientRoute = require('./routes/client')
 
 app.use('/user', userRoute)
+app.use('/client', clientRoute)
 
 Promise.resolve()
   // First, try to open the database
