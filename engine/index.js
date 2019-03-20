@@ -1,35 +1,16 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const db = require('sqlite')
 
 const app = express()
 const port = process.env.PORT || 3000
 
-app.get('/users', async (req, res, next) => {
-  try {
-    const users = await db.all('SELECT * FROM User LIMIT 10')
-    res.send(users)
-  } catch (err) {
-    next(err)
-  }
-})
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.get('/clients', async (req, res, next) => {
-  try {
-    const clients = await db.all('SELECT * FROM Client LIMIT 10')
-    res.send(clients)
-  } catch (err) {
-    next(err)
-  }
-})
+const userRoute = require('./routes/user')
 
-app.get('/projects', async (req, res, next) => {
-  try {
-    const projects = await db.all('SELECT * FROM Project LIMIT 10')
-    res.send(projects)
-  } catch (err) {
-    next(err)
-  }
-})
+app.use('/user', userRoute)
 
 Promise.resolve()
   // First, try to open the database
