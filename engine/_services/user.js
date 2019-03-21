@@ -1,4 +1,4 @@
-module.exports = (db) => ({
+const user = db => ({
 
   getAll: () => db.all('SELECT * FROM User'),
 
@@ -11,3 +11,5 @@ module.exports = (db) => ({
   delete: (id) => db.run('DELETE FROM User WHERE id = ?', id)
 
 })
+
+module.exports = user
