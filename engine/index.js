@@ -10,9 +10,11 @@ app.use(bodyParser.json());
 
 const userRoute = require('./routes/user')
 const clientRoute = require('./routes/client')
+const projectRoute = require('./routes/project')
 
 app.use('/user', userRoute)
 app.use('/client', clientRoute)
+app.use('/project', projectRoute)
 
 Promise.resolve()
   // First, try to open the database
