@@ -1,0 +1,34 @@
+version: '3'
+services:
+  cockpit:
+    build: ./cockpit
+    command: npm run serve
+    volumes:
+      - ./cockpit:/usr/share/nginx/html
+      - /usr/share/nginx/html/node_modules
+    ports:
+      - "8080:8080"
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - engine
+  
+  engine:
+    build: ./engine
+    command: npm run up
+    volumes:
+      - ./engine:/usr/src
+      - /usr/src/node_modules
+    ports:
+      - "3000:3000"
+    # depends_on:
+    #   - postgres
+    environment:
+      - NODE_ENV=development
+      # - PORT=3000
+      # DATABASE_URL: postgres://todoapp@postgres/todos
+  # postgres:
+  #   image: postgres:9.6.2-alpine
+  #   environment:
+  #     POSTGRES_USER: todoapp
+  #     POSTGRES_DB: todos
